@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# User Profile React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This React app provides a user profile page where users can input personal details, which are stored in local storage. The page also retrieves data from external APIs for location and user profile information.
 
-In the project directory, you can run:
+## Steps Taken to Design the React Pages
 
-### `npm start`
+### 1. Project Setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Initialized a React app using `create-react-app`.
+- Installed dependencies: TailwindCSS for styling.
+- Configured TailwindCSS by adding directives in `src/index.css` and setting up `tailwind.config.js`.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 2. Page Layout (UserProfilePage)
 
-### `npm test`
+- Created a `UserProfilePage.js` component inside the `src/pages` directory.
+- Designed a centered form layout using TailwindCSS with `flex`, `justify-center`, and `items-center` classes to center the form both horizontally and vertically.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 3. Form Fields and State Management
+- Defined an initial state using useState to store user profile fields: `name`, `age`, `gender`, `location`, etc.
+- Added input elements for each field, utilizing the `value` and `onChange` properties to bind the inputs to the state.
+- Used a `<select>` element for gender with only two options ("male" and "female") to limit choices.
 
-### `npm run build`
+### 4. Validation Implementation
+- Added input validation to ensure fields are not empty, age is above zero, gender has only two options, and email follows a valid format.
+- Displayed error messages below each input if validation criteria were not met.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 5. Local Storage for Persisting Data
+- Implemented functionality to save form data to local storage on clicking the "Save" button.
+- Used `useEffect` to load data from local storage when the component mounts, allowing the app to persist data across page refreshes.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 6. External API Integrations
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Location API: Implemented `fetchLocation` to retrieve the user's city and country from the Abstract API and display it in the location field.
+- User Profile API: Used `fetchUserProfile` to get user data (email, username, display name, and avatar URI) from the GotArtifact API.
+- Stored API keys and tokens securely using environment variables in an `.env` file, which is excluded from version control using `.gitignore`.
 
-### `npm run eject`
+### 7. Environment Variables
+- Set up environment variables in an `.env` file to securely store sensitive information such as the API key for Abstract API and the authorization token for the GotArtifact API.
+- Accessed environment variables using `process.env` in the `fetchLocation` and `fetchUserProfile` functions.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Running the Project
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Clone the repository:
+    ```
+    git clone https://github.com/gentleman9999/user-profile-app.git
+    cd user-profile-app
+    ```
+2. Install dependencies:
+    ```
+    npm install
+    ```
+3. Set up environment variables:
+    - Create an `.env` file in the project root with the following content:
+        ```
+        REACT_APP_ABSTRACT_API_KEY=your_abstractapi_key_here
+        REACT_APP_AUTH_TOKEN=your_gotartifact_auth_token_here
+        ```
+4. Start the development server:
+    ```
+    npm start
+    ```
