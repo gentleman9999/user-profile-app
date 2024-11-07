@@ -1,5 +1,6 @@
 # User Profile React App
 
+
 ## Overview
 
 This React app provides a user profile page where users can input personal details, which are stored in local storage. The page also retrieves data from external APIs for location and user profile information.
@@ -39,6 +40,7 @@ This React app provides a user profile page where users can input personal detai
 ### 7. Environment Variables
 - Set up environment variables in an `.env` file to securely store sensitive information such as the API key for Abstract API and the authorization token for the GotArtifact API.
 - Accessed environment variables using `process.env` in the `fetchLocation` and `fetchUserProfile` functions.
+
 
 ## Running the Project
 
